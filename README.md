@@ -29,3 +29,26 @@ app.listen(3000, () => console.log('Server started on port 3000'));
 ```
 - Start the server with `nodemon src/app.js`
 - Open http://localhost:3000
+
+
+### Step02-Add secured routes
+- Create a "fake" user. In real life you will have a real user once the user has logged in 
+```js
+// Generate "fake" user for the tutorial
+const user = {
+    userId: 42,
+    firstName: "Nir",
+    lastName: "Geier",
+    email: "nirgeier@gmail.com"
+}
+```
+
+- Add route for simulate login `/login`
+
+```js
+// Set login route which will be protected 
+// with JWT tokens
+app.use('/login', (req, res, next) => {
+    res.send(`Login ...`);
+});
+```
