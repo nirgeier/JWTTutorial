@@ -52,3 +52,27 @@ app.use('/login', (req, res, next) => {
     res.send(`Login ...`);
 });
 ```
+### Step03-Adding jwt and sign the user
+- Import the jwt module
+```js
+jwt = require('jsonwebtoken')
+```
+- Set your secret string
+```js
+const SECRET = "try to guess ....";
+```
+- Use the `jwt.sign` inside the `/login` route
+```js
+// The sign method get the payload (data) and a secret key
+// (Synchronous) Returns the JsonWebToken as string
+// Set the token to expire in an hour from now
+jwt.sign({
+    exp: Math.floor(Date.now() / 1000) + (60 * 60),
+    user: user
+}, SECRET,
+(err, token )=> {
+    res.json(token);
+}
+);
+```
+- Verify that you get the token in your browser - navigate to : http://localhost:3000/login
