@@ -128,3 +128,17 @@ In this tutorial we use the foloowing Authentication mechnism
         });
     });
     ```
+
+### Step05-Test the code
+- Test to verify that all is working.
+- First we need to get the token: 
+```sh 
+curl localhost:3000/login
+```
+- Copy the generated token and paste it into the following command (replace the &lt;token):
+```sh
+curl \
+    -H 'Accept: application/json' \
+    -H "Authorization: Bearer <token>" \
+    http://localhost:3000/secure
+```
